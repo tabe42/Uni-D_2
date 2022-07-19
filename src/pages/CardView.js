@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { addDoc, collection } from "firebase/firestore";
+import { addDoc, collection, updateDoc } from "firebase/firestore";
 import { AddWidget } from "../components/AddWidget";
 import { db } from "../firebase-config";
 import {
@@ -17,6 +17,11 @@ export const CardView = (props) => {
   const [imgList, setImgList] = useState([]);
   const userRef = collection(db, "users");
   console.log(props.scanResultWebCam);
+
+  const updateItem = async (docid) => {
+    const docRef = doc(db, "users", docid);
+    await updateDoc(docRef, { card3: "unAVail" });
+  };
 
   const addItem = async () => {
     await addDoc(userRef, {
@@ -52,10 +57,9 @@ export const CardView = (props) => {
     // getDoc(userRef2).then((doc) => {
     //   console.log(doc.data(), doc.id);
     // });
-    const checkIfExists = () => {};
 
     const getUserList = async () => {
-      const found2 = false;
+      let found2 = false;
       console.log("reading");
       const userRef2 = collection(db, "users");
 
@@ -92,10 +96,21 @@ export const CardView = (props) => {
         console.log("calling adddoc inside useeffect");
         await addDoc(userRef, {
           admno: props.scanResultWebCam,
-          card1: "available",
-          card2: "available",
-          card3: "available",
           name: "test",
+          LibCard: {
+            card1: {
+              status: true,
+              bookname: "-",
+            },
+            card2: {
+              status: true,
+              bookname: "-",
+            },
+            card3: {
+              status: true,
+              bookname: "-",
+            },
+          },
         });
 
         console.log("console log inside found==false statement", imgList);
@@ -140,14 +155,16 @@ export const CardView = (props) => {
               // console.log("inside function");
               //REPLACE 8947 WITH THE INT VALUE OBTAINED FROM QR CODE.
               if (item.admno == props.scanResultWebCam) {
+                console.log("ITEM ID IS ", item.id);
                 return (
                   <AddWidget
                     key={item.id}
+                    docid={item.id}
                     name={item.name}
                     admno={item.admno}
-                    card1={item.card1}
-                    card2={item.card2}
-                    card3={item.card3}
+                    card1={item.LibCard.card1}
+                    card2={item.LibCard.card2}
+                    card3={item.LibCard.card3}
                   />
                 );
               }
