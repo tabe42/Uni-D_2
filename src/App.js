@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import QrReader from "react-qr-reader";
 import { CardView } from "./pages/CardView";
 import { Attendence } from "./pages/Attendence";
+import { Landing } from "./components/Landing";
 
 function App() {
   const [scanResultWebCam, setScanResultWebCam] = useState("");
@@ -37,21 +38,31 @@ function App() {
     <>
       {scanResultWebCam == "" ? (
         <>
-          <QrReader
-            delay={300}
-            style={{ width: "50%" }}
-            onError={handleErrorWebCam}
-            onScan={handleScanWebCam}
-          />
-          <input
-            placeholder="backup entry"
-            className="border-2 border-black"
-            onChange={(e) => {
-              setManualinput(e.target.value);
-              console.log(manualinput);
-            }}
-          />
-          <button onClick={manualentry}>CLICK ME</button>
+          <div className="flex flex-col justify-center items-center">
+            <QrReader
+              delay={300}
+              style={{ width: "50%" }}
+              onError={handleErrorWebCam}
+              onScan={handleScanWebCam}
+            />
+
+            <div className="p-2 bg-green-500 rounded-md mt-4">
+              <input
+                placeholder="backup entry"
+                className="border-2 rounded-md p-2"
+                onChange={(e) => {
+                  setManualinput(e.target.value);
+                  console.log(manualinput);
+                }}
+              />
+              <button
+                className="ml-4 p-2 bg-green-200 text-green-600 rounded-md"
+                onClick={manualentry}
+              >
+                CHECK
+              </button>
+            </div>
+          </div>
         </>
       ) : (
         <>

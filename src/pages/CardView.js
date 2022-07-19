@@ -97,20 +97,12 @@ export const CardView = (props) => {
         await addDoc(userRef, {
           admno: props.scanResultWebCam,
           name: "test",
-          LibCard: {
-            card1: {
-              status: true,
-              bookname: "-",
-            },
-            card2: {
-              status: true,
-              bookname: "-",
-            },
-            card3: {
-              status: true,
-              bookname: "-",
-            },
-          },
+          card1status: true,
+          card1book: "-",
+          card2status: true,
+          card2book: "-",
+          card3status: true,
+          card3book: "-",
         });
 
         console.log("console log inside found==false statement", imgList);
@@ -143,7 +135,7 @@ export const CardView = (props) => {
         <div className="bg-green-500 p-3 text-white rounded-md shadow-md">
           {/* <p>STUDENT: DEB</p>
           <p>ADMISSION NUMBER:8947</p> */}
-          <div className="bg-white p-3 text-green-500 mt-2 rounded-md space-y-4 space-x-4">
+          <div className="bg-white p-3 text-green-500 mt-2 rounded-md space-y-4">
             {/* <AddWidget cardnumber={"1"} cardstatus={card1} />
             <AddWidget cardnumber="2" cardstatus={card2} />
             <AddWidget cardnumber="3" cardstatus={card3} /> */}
@@ -162,9 +154,12 @@ export const CardView = (props) => {
                     docid={item.id}
                     name={item.name}
                     admno={item.admno}
-                    card1={item.LibCard.card1}
-                    card2={item.LibCard.card2}
-                    card3={item.LibCard.card3}
+                    card1status={item.card1status}
+                    card2status={item.card2status}
+                    card3status={item.card3status}
+                    card1book={item.card1book}
+                    card2book={item.card2book}
+                    card3book={item.card3book}
                   />
                 );
               }
