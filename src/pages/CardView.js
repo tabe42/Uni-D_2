@@ -104,6 +104,8 @@ export const CardView = (props) => {
           card3status: true,
           card3book: "-",
         });
+        alert("New Account Created, Please reload!");
+        window.location.reload(false);
 
         console.log("console log inside found==false statement", imgList);
       }
