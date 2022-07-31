@@ -11,16 +11,20 @@ import {
   where,
 } from "firebase/firestore";
 import { RepeatRounded } from "@material-ui/icons";
+import { Loader } from "./Loader";
 
 export const CardView = (props) => {
+  const [loading, setLoading] = useState(false);
   const [found, setFound] = useState(false);
   const [imgList, setImgList] = useState([]);
   const userRef = collection(db, "users");
   console.log(props.scanResultWebCam);
 
   const updateItem = async (docid) => {
+    setLoading(true);
     const docRef = doc(db, "users", docid);
     await updateDoc(docRef, { card3: "unAVail" });
+    setLoading(false);
   };
 
   const addItem = async () => {
@@ -59,11 +63,13 @@ export const CardView = (props) => {
     // });
 
     const getUserList = async () => {
+      setLoading(true);
       let found2 = false;
       console.log("reading");
       const userRef2 = collection(db, "users");
 
       const data2 = await getDocs(userRef2);
+      setLoading(false);
       console.log("datalogged is", data2);
       console.log("image data", data2);
       const myNewList = data2.docs.map((doc) => ({
@@ -97,6 +103,7 @@ export const CardView = (props) => {
         await addDoc(userRef, {
           admno: props.scanResultWebCam,
           name: "test",
+          // card1: { bookname: "=" },
           card1status: true,
           card1book: "-",
           card2status: true,
@@ -130,7 +137,7 @@ export const CardView = (props) => {
   //   getProducts();
   // }, []);
 
-  return (
+  return loading === false ? (
     <div className="flex flex-col items-center h-screen">
       <p className="text-green-500 text-[64px] my-4">UNI-ID</p>
       <div className="m-auto text-2xl">
@@ -166,31 +173,16 @@ export const CardView = (props) => {
                 );
               }
             })}
-
-            {/* <div className="flex flex-row justify-bsetween items-center space-x-16">
-              <p>CARD 1: AVAILABLE</p>
-              <p className="bg-green-500 text-white p-2 rounded-md hover:scale-105">
-                ISSUE BOOK
-              </p>
-            </div>
-            <div className="flex flex-row justify-between items-center space-x-16 text-red-600">
-              <p>CARD 2: UNAVAILABLE</p>
-              <p className="bg-red-500 text-white p-2 rounded-md hover:scale-105">
-                DETAILS
-              </p>
-            </div>
-            <div className="flex flex-row justify-between items-center space-x-16">
-              <p>CARD 3: ISSUED</p>
-              <p className="bg-green-500 text-white p-2 rounded-md hover:scale-105">
-                ISSUE BOOK
-              </p>
-            </div> */}
           </div>
           <div className="bg-green-400 rounded-md mt-4 p-2 text-center">
             ISSUAL HISTORY
           </div>
         </div>
       </div>
+    </div>
+  ) : (
+    <div className="bg-gray-200 text-green-600 shadow-md text-center">
+      <Loader />
     </div>
   );
 };
