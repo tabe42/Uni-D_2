@@ -102,7 +102,7 @@ export const CardView = (props) => {
         console.log("calling adddoc inside useeffect");
         await addDoc(userRef, {
           admno: props.scanResultWebCam,
-          name: "test",
+          name: props.scanNameWebCam,
           // card1: { bookname: "=" },
           card1status: true,
           card1book: "-",

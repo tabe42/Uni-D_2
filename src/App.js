@@ -6,6 +6,7 @@ import { Landing } from "./components/Landing";
 
 function App() {
   const [scanResultWebCam, setScanResultWebCam] = useState("");
+  const [scanNameWebCam, setScanNameWebCam] = useState("");
   const [currentFunction, setCurrentFunction] = useState("1");
   const [manualinput, setManualinput] = useState("");
 
@@ -25,6 +26,8 @@ function App() {
   const handleScanWebCam = (result) => {
     if (result) {
       setScanResultWebCam(result.substr(58, 4));
+      const myArr = result.split(",");
+      setScanNameWebCam(myArr[2].substr(7));
       console.log(result);
     }
   };
@@ -104,7 +107,7 @@ function App() {
           ) : (
             <>
               {currentFunction == "Lib" ? (
-                <CardView scanResultWebCam={scanResultWebCam} />
+                <CardView scanResultWebCam={scanResultWebCam} scanNameWebCam={scanNameWebCam} />
               ) : (
                 <Attendence />
               )}
