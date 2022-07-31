@@ -12,6 +12,7 @@ import {
 } from "firebase/firestore";
 import { RepeatRounded } from "@material-ui/icons";
 import { Loader } from "./Loader";
+import { Loader2 } from "./Loader2";
 
 export const CardView = (props) => {
   const [loading, setLoading] = useState(false);
@@ -181,8 +182,13 @@ export const CardView = (props) => {
       </div>
     </div>
   ) : (
-    <div className="bg-gray-200 text-green-600 shadow-md text-center">
-      <Loader />
+    <div className="flex flex-col items-center h-screen">
+      <p className="text-green-500 text-[64px] my-4">UNI-ID</p>
+      <div className="m-auto text-2xl">
+        <div className="bg-green-500 p-3 text-white rounded-md shadow-md">
+          <Loader2 />
+        </div>
+      </div>
     </div>
   );
 };
