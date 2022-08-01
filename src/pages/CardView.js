@@ -28,6 +28,8 @@ export const CardView = (props) => {
     setLoading(false);
   };
 
+  const displayList = () => {};
+
   const addItem = async () => {
     await addDoc(userRef, {
       admno: props.scanResultWebCam,
@@ -111,6 +113,7 @@ export const CardView = (props) => {
           card2book: "-",
           card3status: true,
           card3book: "-",
+          booklist: [],
         });
         alert("New Account Created, Please reload!");
         window.location.reload(false);
@@ -170,14 +173,15 @@ export const CardView = (props) => {
                     card1book={item.card1book}
                     card2book={item.card2book}
                     card3book={item.card3book}
+                    booklist={item.booklist}
                   />
                 );
               }
             })}
           </div>
-          <div className="bg-green-400 rounded-md mt-4 p-2 text-center">
+          {/* <div className="bg-green-400 rounded-md mt-4 p-2 text-center">
             ISSUAL HISTORY
-          </div>
+          </div> */}
         </div>
       </div>
     </div>
