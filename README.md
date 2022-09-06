@@ -1,70 +1,48 @@
-# Getting Started with Create React App
+# Uni-D
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Here in our college, we usually have to carry around 3 separate cards
+to issue books from the library (One cad per book). This is troublesome
+because managing 3 cards is a hassle and you often don't end up
+having your card on you when you want to issue a book.  
+**Uni-D** is simply our attempt at solving this problem.
 
-## Available Scripts
+## Our Solution
 
-In the project directory, you can run:
+Students are issued an identification(ID) card at the start of their first semester.
+The ID card contains on its back, a QR _unique_ to each student. We make use of the student
+registration number (which can be pulled from the QR) to map each student to the details about
+the books they have currently rented out as well as their book rental history.  
+We believe this makes the whole process of issuing books from the library
 
-### `npm start`
+- More Accessible
+- More Faster it terms of issuing and returning of books.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## How it works
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+- The Uni-D is only locally set up at the Librarians computer
+- A person wishing to issue a book scans the QR on their ID card
+- The librarian then enters the book ID of the book that has been issued
 
-### `npm test`
+## Deployment
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- You can find our app deployed for demo purposes at [Uni-D](https://uni-d-beta.vercel.app/)
 
-### `npm run build`
+## Local set up to add new features
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Clone the repository locally
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```bash
+git clone https://github.com/devan-MEC/Uni-D_2.git
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Change directory into the newly created folder
 
-### `npm run eject`
+```bash
+npm install -f
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+To run the project
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+```bash
+npm run start
+```
