@@ -13,6 +13,7 @@ import {
 import { RepeatRounded } from "@material-ui/icons";
 import { Loader } from "./Loader";
 import { Loader2 } from "./Loader2";
+import { BookShelf } from "../components/BookShelf";
 
 export const CardView = (props) => {
   const [loading, setLoading] = useState(false);
@@ -184,6 +185,7 @@ export const CardView = (props) => {
           </div> */}
         </div>
       </div>
+      <BookShelf />
     </div>
   ) : (
     <div className="flex flex-col items-center h-screen">
