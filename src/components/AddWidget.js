@@ -18,6 +18,7 @@ export const AddWidget = ({
   card2book,
   card3book,
   booklist,
+  validbooklist,
 }) => {
   const [loading, setLoading] = useState(false);
   let visible2 = false;
@@ -66,20 +67,24 @@ export const AddWidget = ({
   return (
     <>
       {loading === false ? (
-        <>
-          {console.log(docid)}
+        <div>
+          {/* {console.log("INSIDE ADDWIDGET ", validbooklist)} */}
           <p className="font-xl text-center">LIBRARY LOGS</p>
           <p>Name: {name}</p>
           <p>Admission Number: {admno}</p>
           <div className="flex flex-col ">
-            <div className="flex flex-row justify-start items-center space-x-4 bg-green-100 rounded-md p-2">
+            <div className="flex flex-row justify-center items-center space-x-4 bg-green-100 rounded-md p-2">
               <p>CARD 1</p>
               {/* <p className="bg-green-500 p-4 rounded-md shadow-md text-white">
           {card1.bookname}
         </p> */}
 
               {card1status === true ? (
-                <AvailIssue IssueBook={IssueBook} cnum="1" />
+                <AvailIssue
+                  IssueBook={IssueBook}
+                  validbooklist={validbooklist}
+                  cnum="1"
+                />
               ) : (
                 <UnavailReturn
                   returnBook={returnBook}
@@ -88,10 +93,14 @@ export const AddWidget = ({
                 />
               )}
             </div>
-            <div className="flex flex-row justify-start items-center space-x-4 bg-green-100 rounded-md p-2">
+            <div className="flex flex-row justify-center items-center space-x-4 bg-green-100 rounded-md p-2">
               <p>CARD 2</p>
               {card2status === true ? (
-                <AvailIssue IssueBook={IssueBook} cnum="2" />
+                <AvailIssue
+                  IssueBook={IssueBook}
+                  validbooklist={validbooklist}
+                  cnum="2"
+                />
               ) : (
                 <UnavailReturn
                   returnBook={returnBook}
@@ -102,11 +111,15 @@ export const AddWidget = ({
             </div>
             <div
               // onClick={() => updateItem(docid)}
-              className="flex flex-row  items-center space-x-4 bg-green-100 rounded-md p-2 "
+              className="flex flex-row   justify-center items-center space-x-4 bg-green-100 rounded-md p-2 "
             >
               <p>CARD 3</p>
               {card3status === true ? (
-                <AvailIssue IssueBook={IssueBook} cnum="3" />
+                <AvailIssue
+                  IssueBook={IssueBook}
+                  validbooklist={validbooklist}
+                  cnum="3"
+                />
               ) : (
                 <UnavailReturn
                   returnBook={returnBook}
@@ -127,7 +140,7 @@ export const AddWidget = ({
           </div>
 
           {visible && <ListOfBooks booklist={booklist} />}
-        </>
+        </div>
       ) : (
         <Loader />
       )}

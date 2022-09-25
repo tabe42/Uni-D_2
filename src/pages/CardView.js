@@ -19,7 +19,9 @@ export const CardView = (props) => {
   const [loading, setLoading] = useState(false);
   const [found, setFound] = useState(false);
   const [imgList, setImgList] = useState([]);
+  const [validbooklist, setValidbooklist] = useState([]);
   const userRef = collection(db, "users");
+  const mysecondlist = [];
   console.log(props.scanResultWebCam);
 
   const updateItem = async (docid) => {
@@ -48,6 +50,29 @@ export const CardView = (props) => {
 
   // const q = query(userRef, where());
   useEffect(() => {
+    const booklistref = collection(db, "books");
+    // console.log("LOGGED ONCE INSIDE USEFFFECT IN CARDVIEW");
+    // getDocs(booklistref)
+    //   .then((response) => {
+    //     response.docs.map((doc) => {
+    //       console.log("brooO " + doc.data().name + " and " + doc.id);
+    //       setValidbooklist(
+    //         validbooklist.push({ name: doc.data().name, id: doc.id })
+    //       );
+    //     });
+
+    //     // setValidbooklist(
+    //     //   response.docs.map((doc) => ({ ...doc.data(), id: doc.id }))
+    //     // );
+    //   })
+    //   .catch((error) => console.log(error))
+    //   .finally(console.log("second list is ", mysecondlist));
+
+    const getbooklist = async () => {
+      const data = await getDocs(booklistref);
+      // console.log("hi", data);
+      setValidbooklist(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+    };
     // const q = query(collection(db, "users"), where("admno", "==", "8947"));
     // const querySnapshot = getDocs(q);
     // querySnapshot.forEach((doc) => {
@@ -121,7 +146,7 @@ export const CardView = (props) => {
 
         console.log("console log inside found==false statement", imgList);
       }
-
+      getbooklist();
       setImgList(myNewList);
     };
 
@@ -154,28 +179,37 @@ export const CardView = (props) => {
             <AddWidget cardnumber="2" cardstatus={card2} />
             <AddWidget cardnumber="3" cardstatus={card3} /> */}
 
-            {imgList.map((item) => {
+            {imgList.map((item, key) => {
+              key = { key };
               console.log("ITEM LOGGED IS ", item);
               console.log(props.scanResultWebCam);
 
               // console.log("inside function");
               //REPLACE 8947 WITH THE INT VALUE OBTAINED FROM QR CODE.
               if (item.admno == props.scanResultWebCam) {
+                console.log("secondlist inside cardview return", validbooklist);
                 console.log("ITEM ID IS ", item.id);
                 return (
-                  <AddWidget
-                    key={item.id}
-                    docid={item.id}
-                    name={item.name}
-                    admno={item.admno}
-                    card1status={item.card1status}
-                    card2status={item.card2status}
-                    card3status={item.card3status}
-                    card1book={item.card1book}
-                    card2book={item.card2book}
-                    card3book={item.card3book}
-                    booklist={item.booklist}
-                  />
+                  <>
+                    <AddWidget
+                      key={item.id}
+                      docid={item.id}
+                      name={item.name}
+                      admno={item.admno}
+                      card1status={item.card1status}
+                      card2status={item.card2status}
+                      card3status={item.card3status}
+                      card1book={item.card1book}
+                      card2book={item.card2book}
+                      card3book={item.card3book}
+                      booklist={item.booklist}
+                      validbooklist={validbooklist}
+                    />
+                    <BookShelf
+                      booklist={item.booklist}
+                      validbooklist={validbooklist}
+                    />
+                  </>
                 );
               }
             })}
@@ -185,7 +219,6 @@ export const CardView = (props) => {
           </div> */}
         </div>
       </div>
-      <BookShelf />
     </div>
   ) : (
     <div className="flex flex-col items-center h-screen">
