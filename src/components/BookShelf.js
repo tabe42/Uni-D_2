@@ -104,7 +104,7 @@ export const BookShelf = (props) => {
       <div className="flex flex-row space-x-2   space-x-10">
         {names.map((name, index) => {
           return (
-            <SuggestedBook key={name} title={name} imgref={images[index]} />
+            <SuggestedBook key={index} title={name} imgref={images[index]} />
           );
         })}
       </div>
