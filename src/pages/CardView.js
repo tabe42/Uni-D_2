@@ -14,7 +14,7 @@ import { RepeatRounded } from "@material-ui/icons";
 import { Loader } from "./Loader";
 import { Loader2 } from "./Loader2";
 import { BookShelf } from "../components/BookShelf";
-
+import Navbar from "../components/Navbar";
 export const CardView = (props) => {
   const [loading, setLoading] = useState(false);
   const [found, setFound] = useState(false);
@@ -168,13 +168,13 @@ export const CardView = (props) => {
   // }, []);
 
   return loading === false ? (
-    <div className="flex flex-col items-center h-screen">
-      <p className="text-green-500 text-[64px] my-4">UNI-ID</p>
+    <div className="flex flex-col items-center h-screen shadow-md">
+      <Navbar />
       <div className="m-auto text-2xl">
-        <div className="bg-green-500 p-3 text-white rounded-md shadow-md">
+        <div className="bg-white p-6 text-white rounded-md shadow-md">
           {/* <p>STUDENT: DEB</p>
           <p>ADMISSION NUMBER:8947</p> */}
-          <div className="bg-white p-3 text-green-500 mt-2 rounded-md space-y-4">
+          <div className="bg-white p-3 px-6 text-green-500 mt-2 rounded-md space-y-4">
             {/* <AddWidget cardnumber={"1"} cardstatus={card1} />
             <AddWidget cardnumber="2" cardstatus={card2} />
             <AddWidget cardnumber="3" cardstatus={card3} /> */}

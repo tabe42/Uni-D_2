@@ -67,17 +67,14 @@ export const AddWidget = ({
   return (
     <>
       {loading === false ? (
-        <div>
+        <div className="flex flex-col space-y-2 text-gray-800">
           {/* {console.log("INSIDE ADDWIDGET ", validbooklist)} */}
           <p className="font-xl text-center">LIBRARY LOGS</p>
           <p>Name: {name}</p>
           <p>Admission Number: {admno}</p>
-          <div className="flex flex-col ">
-            <div className="flex flex-row justify-center items-center space-x-4 bg-green-100 rounded-md p-2">
+          <div className="flex flex-col space-y-2">
+            <div className="flex flex-row stats justify-center items-center space-x-4 rounded-md p-2">
               <p>CARD 1</p>
-              {/* <p className="bg-green-500 p-4 rounded-md shadow-md text-white">
-          {card1.bookname}
-        </p> */}
 
               {card1status === true ? (
                 <AvailIssue
@@ -93,8 +90,8 @@ export const AddWidget = ({
                 />
               )}
             </div>
-            <div className="flex flex-row justify-center items-center space-x-4 bg-green-100 rounded-md p-2">
-              <p>CARD 2</p>
+            <div className="flex flex-row stats justify-center items-center space-x-4 bg-green-100 rounded-md p-2">
+              <p >CARD 2</p>
               {card2status === true ? (
                 <AvailIssue
                   IssueBook={IssueBook}
@@ -111,7 +108,7 @@ export const AddWidget = ({
             </div>
             <div
               // onClick={() => updateItem(docid)}
-              className="flex flex-row   justify-center items-center space-x-4 bg-green-100 rounded-md p-2 "
+              className="flex flex-row stats justify-center items-center space-x-4 bg-green-100 rounded-md p-2"
             >
               <p>CARD 3</p>
               {card3status === true ? (
@@ -129,7 +126,7 @@ export const AddWidget = ({
               )}
             </div>
             <button
-              className="bg-green-400 rounded-md mt-4 p-2 text-center text-white hover:bg-green-300"
+              className="rounded-md mt-4 p-2 text-center text-gray-800 hover:bg-green-300"
               onClick={() => {
                 if (visible === false) setVisible(true);
                 else setVisible(false);

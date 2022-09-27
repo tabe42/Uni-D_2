@@ -6,13 +6,15 @@ export const AvailIssue = (props) => {
   // console.log("INSIDE AVAILISSUE IS " + props.validbooklist);
   let name;
   return (
-    <div className="flex flex-row  justify-between items-center space-x-8 ">
-      <p className="p-2 bg-green-500 text-white rounded-md">AVAILABLE</p>
+    <div className="flex flex-row  justify-between items-center space-x-8 p-2">
+      <p className="flex items-center justify-center p-2 bg-green-500 text-white rounded-md ml-4">
+        AVAILABLE
+      </p>
       <input
         type="text"
         list="validbookids"
         display="none"
-        className="py-1 px-2 rounded-md w-[250px]"
+        className="py-1 px-2 rounded-md w-[250px] input stat placeholder:text-2xl"
         placeholder="enter book id"
         onChange={(e) => {
           name = e.target.value;
@@ -26,7 +28,7 @@ export const AvailIssue = (props) => {
       </datalist>
 
       <div
-        className="text-green-600 p-2 bg-green-200 hover:bg-green-600 hover:text-white"
+        className="text-green-600 p-2 bg-base-100 hover:bg-green-600 hover:text-white"
         onClick={() => props.IssueBook(props.cnum, bookname)}
       >
         <p> ISSUE</p>

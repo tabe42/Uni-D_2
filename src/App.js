@@ -7,7 +7,7 @@ import { Landing } from "./components/Landing";
 function App() {
   const [scanResultWebCam, setScanResultWebCam] = useState("");
   const [scanNameWebCam, setScanNameWebCam] = useState("");
-  const [currentFunction, setCurrentFunction] = useState("1");
+  const [currentFunction, setCurrentFunction] = useState("Lib");
   const [manualinput, setManualinput] = useState("");
 
   const handleClickLibrary = (error) => {
@@ -39,83 +39,48 @@ function App() {
   };
   return (
     <>
-      {scanResultWebCam == "" ? (
-        <>
-          <div className="flex flex-col justify-center items-center">
-            <QrReader
-              delay={300}
-              style={{ width: "50%" }}
-              onError={handleErrorWebCam}
-              onScan={handleScanWebCam}
-            />
 
-            <div className="p-2 bg-green-500 rounded-md mt-4">
-              <input
-                placeholder="backup entry"
-                className="border-2 rounded-md p-2"
-                onChange={(e) => {
-                  setManualinput(e.target.value);
-                  console.log(manualinput);
-                }}
-              />
-              <button
-                className="ml-4 p-2 bg-green-200 text-green-600 rounded-md"
-                onClick={manualentry}
-              >
-                CHECK
-              </button>
-            </div>
-          </div>
-        </>
-      ) : (
-        <>
-          {currentFunction == "1" ? (
-            <div>
-              <div className="flex flex-col items-center h-screen">
-                <p className="text-green-500 text-[64px] my-4 mt-10 font-semibold">
-                  WELCOME : {scanResultWebCam}
-                </p>
-                <div className="m-auto text-2xl">
-                  <div className="bg-green-500 p-8 text-white rounded-md shadow-md">
-                    <div className="flex flex-row bg-green-500 items-center justify-center space-x-8">
-                      <button
-                        className="flex p-10 px-16 bg-green-400 rounded-md shadow-md"
-                        onClick={handleClickLibrary}
-                      >
-                        Library
-                      </button>
-                      <button
-                        className="flex p-10 px-16 bg-green-400 rounded-md shadow-md"
-                        onClick={handleClickAttendence}
-                      >
-                        Attendence
-                      </button>
-                      <button
-                        className="flex p-10 px-16 bg-green-400 rounded-md shadow-md"
-                        onClick={handleClickCafeteria}
-                      >
-                        Cafeteria
-                      </button>
-                    </div>
-                    <div className="bg-green-400 rounded-md mt-8 p-8 text-center">
-                      CHOOSE FUNCTION
-                    </div>
+      {scanResultWebCam == "" ? (
+          <div className="flex flex-col justify-center items-center">
+            <div className="hero min-h-screen bg-base-200">
+              <div className="hero-content flex-col lg:flex-row-reverse">
+                <div className="text-center lg:text-left min-w-full p-6">
+                  <h1 className="text-5xl font-bold">Welcome to unid!</h1>
+                  {/* <p className="py-6 text-center">Scan your College - ID card to proceed.</p> */}
+                  <div className="flex flex-row place-content-evenly p-2 bg-green-500 rounded-md mt-4 bg-base-200 ">
+                    <input
+                      placeholder="backup entry"
+                      className="border-2 rounded-md p-2 input"
+                      
+                      onChange={(e) => {
+                        setManualinput(e.target.value);
+                        console.log(manualinput);
+                      }}
+                    />
+                    <button
+                      className="ml-4 p-2 btn rounded-md"
+                      onClick={manualentry}
+                    >
+                      CHECK
+                    </button>
                   </div>
+                </div>
+                <div className="card flex-shrink-0 w-full max-w-md shadow-2xl bg-red-100">
+                <QrReader
+                    delay={300}
+                    style={{ width: "100%" }}
+                    onError={handleErrorWebCam}
+                    onScan={handleScanWebCam}
+                  />
                 </div>
               </div>
             </div>
-          ) : (
-            <>
-              {currentFunction == "Lib" ? (
-                <CardView scanResultWebCam={scanResultWebCam} scanNameWebCam={scanNameWebCam} />
-              ) : (
-                <Attendence />
-              )}
-            </>
-          )}
-        </>
-      )}
-    </>
+          </div>
+          
+      ) : (
+            <CardView scanResultWebCam={scanResultWebCam} scanNameWebCam={scanNameWebCam} />
+        )}
+      </>
   );
 }
 
