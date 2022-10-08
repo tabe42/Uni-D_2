@@ -73,7 +73,7 @@ export const AddWidget = ({
           <p>Name: {name}</p>
           <p>Admission Number: {admno}</p>
           <div className="flex flex-col space-y-2">
-            <div className="flex flex-row stats justify-center items-center space-x-4 rounded-md p-2">
+            <div className="flex flex-row card bg-primary text-primary-content justify-center items-center space-x-4 rounded-md p-2">
               <p>CARD 1</p>
 
               {card1status === true ? (
@@ -90,7 +90,7 @@ export const AddWidget = ({
                 />
               )}
             </div>
-            <div className="flex flex-row stats justify-center items-center space-x-4 bg-green-100 rounded-md p-2">
+            <div className="flex flex-row card bg-primary text-primary-content justify-center items-center space-x-4 bg-green-100 rounded-md p-2">
               <p >CARD 2</p>
               {card2status === true ? (
                 <AvailIssue
@@ -108,7 +108,7 @@ export const AddWidget = ({
             </div>
             <div
               // onClick={() => updateItem(docid)}
-              className="flex flex-row stats justify-center items-center space-x-4 bg-green-100 rounded-md p-2"
+              className="flex flex-row card justify-center bg-primary text-primary-content items-center space-x-4 bg-green-100 rounded-md p-2"
             >
               <p>CARD 3</p>
               {card3status === true ? (
