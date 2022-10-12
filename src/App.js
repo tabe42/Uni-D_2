@@ -49,7 +49,7 @@ function App() {
                   {/* <p className="py-6 text-center">Scan your College - ID card to proceed.</p> */}
                   <div className="flex flex-row place-content-evenly p-2 bg-green-500 rounded-md mt-4 bg-base-200 ">
                     <input
-                      placeholder="backup entry"
+                      placeholder="type 8947 to test"
                       className="border-2 rounded-md p-2 input"
                       
                       onChange={(e) => {
