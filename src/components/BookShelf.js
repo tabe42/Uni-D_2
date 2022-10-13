@@ -32,7 +32,7 @@ export const BookShelf = (props) => {
       }
     }
     setBook(bookname);
-    const url = "http://tobabe42.pythonanywhere.com/"+ "request/?book=" + bookid;
+    const url = "https://shrouded-plateau-82529.herokuapp.com/http://tobabe42.pythonanywhere.com/"+ "request/?book=" + bookid;
     fetch(url, {
       method: "get",
       headers: new Headers({
