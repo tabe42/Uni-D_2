@@ -32,7 +32,7 @@ export const BookShelf = (props) => {
       }
     }
     setBook(bookname);
-    const url = "https://a72b-223-227-113-28.in.ngrok.io/"+ "request/?book=" + bookid;
+    const url = "http://tobabe42.pythonanywhere.com/"+ "request/?book=" + bookid;
     fetch(url, {
       method: "get",
       headers: new Headers({
