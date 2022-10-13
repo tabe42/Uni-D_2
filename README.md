@@ -1,33 +1,50 @@
+
 # Uni-D
 
-Here in our college, we usually have to carry around 3 separate cards
-to issue books from the library (One cad per book). This is troublesome
-because managing 3 cards is a hassle and you often don't end up
-having your card on you when you want to issue a book.  
-**Uni-D** is simply our attempt at solving this problem.
+- [Uni-D](https://uni-d-beta.vercel.app/)  is a reading pattern tracker and a recommendation engine
 
-## Our Solution
+### Problem Statement
+- College Library provides 3 cards to students via which books can be issued from the library
+- Managing 3 different cards often prove to be a hassle and students often end up losing their cards
+- No system to recommend books based off reading patterns of a student
 
-Students are issued an identification(ID) card at the start of their first semester.
-The ID card contains on its back, a QR _unique_ to each student. We make use of the student
-registration number (which can be pulled from the QR) to map each student to the details about
-the books they have currently rented out as well as their book rental history.  
-We believe this makes the whole process of issuing books from the library
+### Our Solution
+- The Student Identification card is used to replace the 3 separate library cards
+- QR code at the back of the ID card is scanned to authenticate the identity of the student
 
-- More Accessible
-- More Faster it terms of issuing and returning of books.
+### Features
+- App provides an interface where the book issued can be marked against each card
+- Effectively saves the time to issue a book from the library and removes the requirement of having to have 3 library cards on your person at all times
+- Provides functionality to view issual history as well as recommend books based off the reading patterns of the user 
+- Recommendation engine is a [flask API](https://github.com/devan-MEC/recommendation_backend) hosted at [tobabe42.pythonanywhere.com/](http://tobabe42.pythonanywhere.com/) which returns 5 recommendations calculated using **ML** based off a book ID provided
 
-## How it works
 
-- The Uni-D is only locally set up at the Librarians computer
-- A person wishing to issue a book scans the QR on their ID card
-- The librarian then enters the book ID of the book that has been issued
 
-## Deployment
+### API Reference
 
-- You can find our app deployed for demo purposes at [Uni-D](https://uni-d-beta.vercel.app/)
+#### Get 5 similar books
 
-## Local set up to add new features
+```http
+  https://tobabe42.pythonanywhere.com/request/?book=BOOK_ID
+```
+
+| Parameter | Description     | Example                |
+| :-------- | :------- | :------------------------- |
+| `BOOK_ID` | ID of book for which 5 similar recommendations are needed | `9780006163831` |
+
+
+
+
+
+### Tech-Stack
+
+ - [ReactJs](https://reactjs.org/docs/getting-started.html)
+ - [Firebase](https://firebase.google.com/docs/firestore)
+ - [Tailwind CSS](https://tailwindcss.com/docs/installation)
+ - [Flask](https://flask.palletsprojects.com/en/2.2.x/)
+
+
+### Local set up to add new features
 
 Clone the repository locally
 
@@ -35,14 +52,11 @@ Clone the repository locally
 git clone https://github.com/devan-MEC/Uni-D_2.git
 ```
 
-Change directory into the newly created folder
-
-```bash
+Install dependencies inside the cloned directory
+```
 npm install -f
 ```
-
-To run the project
-
+Start the app
 ```bash
 npm run start
 ```
