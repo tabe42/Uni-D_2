@@ -91,6 +91,9 @@ export const BookShelf = (props) => {
   //   setIndex(0);
 
   // },[])
+  useEffect(() => {
+    getList();
+  }, []);
   return (
     <div className="flex flex-col space-y-2 bg-gray-100 text-gray-500 p-3 rounded-md justify-center items-center m-4">
       <p>RECOMMENDATIONS</p>
