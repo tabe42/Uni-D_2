@@ -32,7 +32,10 @@ export const BookShelf = (props) => {
       }
     }
     setBook(bookname);
-    const url = "https://shrouded-plateau-82529.herokuapp.com/http://tobabe42.pythonanywhere.com/"+ "request/?book=" + bookid;
+    const url =
+      "https://shrouded-plateau-82529.herokuapp.com/http://tobabe42.pythonanywhere.com/" +
+      "request/?book=" +
+      bookid;
     fetch(url, {
       method: "get",
       headers: new Headers({
@@ -91,6 +94,9 @@ export const BookShelf = (props) => {
   //   setIndex(0);
 
   // },[])
+  useEffect(() => {
+    getList();
+  }, []);
   return (
     <div className="flex flex-col space-y-2 bg-gray-100 text-gray-500 p-3 rounded-md justify-center items-center m-4">
       <p>RECOMMENDATIONS</p>
@@ -101,13 +107,18 @@ export const BookShelf = (props) => {
         REFRESH
       </button>
       <p> Based on {book}</p>
-      <div className="flex flex-row space-x-2   space-x-10">
+
+      <div className="flex flex-row justify-center items-center space-x-2 relative">
+        {names.length === 0 && (
+          <p className="">Please wait for server to load...</p>
+        )}
         {names.map((name, index) => {
           return (
             <SuggestedBook key={index} title={name} imgref={images[index]} />
           );
         })}
       </div>
+      <div></div>
     </div>
   );
 };
