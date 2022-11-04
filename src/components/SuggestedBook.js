@@ -12,14 +12,14 @@ export const SuggestedBook = (props) => {
     <div
       onMouseEnter={toggle}
       onMouseLeave={toggle}
-      className="w-[15vw] h-[15vw] relative"
+      className="w-[15vw] h-[22vw] relative"
     >
       <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-black text-center ">
         {props.title}
       </div>
       <div className={clicked ? "" : "opacity-10"}>
         <div className=" absolute flex justify-center items-center ">
-          <img className="w-[15vw] h-[15vw]" src={props.imgref} />
+          <img className="w-[15vw] h-[22vw]" src={props.imgref} />
         </div>
       </div>
     </div>
